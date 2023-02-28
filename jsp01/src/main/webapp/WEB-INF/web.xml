@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <!-- 웹프로젝트 이름(컨텍스트) -->
+  <display-name>jsp01</display-name>
+  
+  <servlet>
+  	<servlet-name>memo</servlet-name>
+  	<servlet-class>memo.MemoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>memo</servlet-name>
+  	<url-pattern>/memo_servlet/*</url-pattern>
+  </servlet-mapping>
+  
+  
+  <!-- 서블릿 매핑 설정 코드 -->
+  <servlet>
+  <!-- 서블릿의 이름 -->
+  <servlet-name>while</servlet-name>
+  <servlet-class>ch01.WhileController</servlet-class>
+  </servlet>
+  <!-- 서블릿 매칭 정의(서블릿을 어떻게 호출할 것인가) -->
+  <servlet-mapping>
+  <!-- 서블릿의 이름, 위와 같아야함. -->
+  <servlet-name>while</servlet-name>
+  <!-- 요청하는 url주소의 규칙 -->
+  <url-pattern>/ch01_servlet/*</url-pattern>
+  </servlet-mapping>
+  
+  
+  <!-- 기본페이지 정의 -->
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+  </welcome-file-list>
+</web-app>
