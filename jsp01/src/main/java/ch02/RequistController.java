@@ -28,9 +28,13 @@ public class RequistController extends HttpServlet {
 		int age=Integer.parseInt(request.getParameter("age"));
 		String gender = request.getParameter("gender");
 		String hobby = request.getParameter("hobby");
+		String email = request.getParameter("email");
+		String tel = request.getParameter("tel");
 		
 		Map<String, Object> map = new HashMap<String , Object>();
 		map.put("name", name);
+		map.put("email", email);
+		map.put("tel", tel);
 		map.put("age", age);
 		gender = gender.equals("m") ? "남" : "여" ;
 		map.put("gender", gender);

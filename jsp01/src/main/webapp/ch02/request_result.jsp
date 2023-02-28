@@ -16,6 +16,8 @@ Map<String, Object> map = (Map<String, Object>)request.getAttribute("map");
 
 %>
 이름 : <%= map.get("name") %> <br>
+이메일 : <%= map.get("email") %><br>
+전화번호 :  <%= map.get("tel") %> <br>
 나이 : <%= map.get("age") %> <br>
 성별 : <%= map.get("gender") %> <br>
 취미 : <%= map.get("hobby") %> <br>
