@@ -4,6 +4,15 @@
   <display-name>jsp01</display-name>
   
   <servlet>
+  <servlet-name>forward</servlet-name>
+  <servlet-class>ch03.ForwardController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>forward</servlet-name>
+  <url-pattern>/ch03_servlet/forward.do</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
   	<servlet-name>memo</servlet-name>
   	<servlet-class>memo.MemoServlet</servlet-class>
   </servlet>
@@ -37,4 +46,18 @@
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
+  
+  
+  <!-- 에러 페이지 설정 -->
+  <error-page>
+  	<error-code>404</error-code>
+  	<location>/error/404code.jsp</location>
+  </error-page>
+  
+  <error-page>
+  	<error-code>500</error-code>
+  	<location>/error/500code.jsp</location>
+  </error-page>
+  
+  
 </web-app>

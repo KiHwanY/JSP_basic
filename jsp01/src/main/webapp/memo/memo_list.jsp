@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ page import="java.util.List" %>
-    <%@ page import="memo.MemoDTO" %>
+    <%@ page import="java.util.List" %> <!--  페이지 import -->
+    <%@ page import="memo.MemoDTO" %> <!--  페이지 import -->
     
 <!DOCTYPE html>
 <html>
