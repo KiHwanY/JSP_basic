@@ -161,6 +161,83 @@ public class MemberController extends HttpServlet {
 			String page="/ch06/login_result.jsp";
 			RequestDispatcher rd= request.getRequestDispatcher(page);
 			rd.forward(request, response);
+			
+		}else if(uri.indexOf("join_sha.do") != -1) {
+			
+			String userid=request.getParameter("userid");
+			String passwd=request.getParameter("passwd");
+			String name=request.getParameter("name");
+			String email=request.getParameter("email");
+			String hp=request.getParameter("hp");
+		
+			
+			MemberDTO dto=new MemberDTO();
+			dto.setUserid(userid);//dto의 setter를 통한 자료저장
+			dto.setPasswd(passwd);
+			dto.setName(name);
+			dto.setEmail(email);
+			dto.setHp(hp);
+			
+			dao.insertSha256(dto);//추가
+			
+		}else if(uri.indexOf("login_sha.do") != -1) {
+			
+			String userid = request.getParameter("userid");
+			String passwd = request.getParameter("passwd");
+			System.out.println("아이디 : "+userid);
+			System.out.println("패스워드 : "+passwd);
+			
+			MemberDTO dto = new MemberDTO();
+			dto.setUserid(userid);
+			dto.setPasswd(passwd);
+			
+			String result = dao.loginCheckSha256(dto);
+			System.out.println(result);
+			request.setAttribute("result", result);
+			
+			String page="/ch06/login_result.jsp";
+			RequestDispatcher rd= request.getRequestDispatcher(page);
+			rd.forward(request, response);
+			
+			
+		}else if(uri.indexOf("join_bcrypt.do") != -1) {
+			
+			String userid=request.getParameter("userid");
+			String passwd=request.getParameter("passwd");
+			String name=request.getParameter("name");
+			String email=request.getParameter("email");
+			String hp=request.getParameter("hp");
+		
+			
+			MemberDTO dto=new MemberDTO();
+			
+			dto.setUserid(userid);//dto의 setter를 통한 자료저장
+			dto.setPasswd(passwd);
+			dto.setName(name);
+			dto.setEmail(email);
+			dto.setHp(hp);
+			
+			dao.insertBcrypt(dto);//추가
+		}else if(uri.indexOf("login_bcrypt.do") != -1) {
+			
+			String userid = request.getParameter("userid");
+			String passwd = request.getParameter("passwd");
+			System.out.println("아이디 : "+userid);
+			System.out.println("패스워드 : "+passwd);
+			
+			MemberDTO dto = new MemberDTO();
+			dto.setUserid(userid);
+			dto.setPasswd(passwd);
+			
+			String result = dao.loginCheckBcrypt(dto);
+			System.out.println(result);
+			request.setAttribute("result", result);
+			
+			String page="/ch06/login_result.jsp";
+			RequestDispatcher rd= request.getRequestDispatcher(page);
+			rd.forward(request, response);
+			
+			
 		}
 	}
 

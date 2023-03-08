@@ -30,9 +30,6 @@ int count=(int)map.get("count");
     <th>가입일자</th>
     <th>이메일</th>
     <th>핸드폰</th>
-    <th>우편주소</th>
-    <th>기본주소</th>
-    <th>상세주소</th>
   </tr>
 <% for(MemberDTO dto : list) { %>  
   <tr>
@@ -41,10 +38,7 @@ int count=(int)map.get("count");
     <td><%= dto.getJoin_date()%></td>
     <td><%= dto.getEmail()%></td>
     <td><%= dto.getHp()%></td>
-    <td><%= dto.getZipcode() %></td>
-    <td><%= dto.getAddress1() %> </td>
-    <td><%= dto.getAddress2() %> </td>
-    
+  
   </tr>
 <% } %>  
 </table>
