@@ -63,9 +63,7 @@ function list(){
 이름 : <input id="name">
 이메일 : <input id="email"> <br>
 핸드폰 : <input id="hp">
-우편번호 : <input id="zipcode"><br>
-기본주소 : <input id="address1">
-상세주소 : <input id="address2">
+
 <button type="button" id="btnSave">추가</button>
 
 <div id="memberList"></div>

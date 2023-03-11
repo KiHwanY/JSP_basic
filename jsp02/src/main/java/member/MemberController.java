@@ -33,10 +33,12 @@ public class MemberController extends HttpServlet {
 			map.put("list", list);//맵에 자료 저장
 			map.put("count", list.size());
 			request.setAttribute("map", map);
-			String page="/ch06/member_list.jsp";
+			//String page="/ch06/member_list.jsp";
+			String page="/ch06/member_list2.jsp";
 			RequestDispatcher rd=request.getRequestDispatcher(page);
 			rd.forward(request, response);//포워딩(주소가 안바뀐다.)
 		}else if(uri.indexOf("join.do") != -1) {//회원등록
+			
 			String userid=request.getParameter("userid");
 			String passwd=request.getParameter("passwd");
 			String name=request.getParameter("name");
@@ -89,6 +91,7 @@ public class MemberController extends HttpServlet {
 			dto.setZipcode(zipcode);
 			dto.setAddress1(address1);
 			dto.setAddress2(address2);
+			
 			
 			//레코드 수정 처리
 			dao.update(dto);

@@ -315,6 +315,7 @@ public class MemberDAO {
 			
 			e.printStackTrace();
 		} finally {
+			
 			try {
 				if(rs != null) rs.close();
 			} catch (Exception e2) {
@@ -401,7 +402,9 @@ public class MemberDAO {
 		} catch (Exception e) {
 			
 			e.printStackTrace();
+			
 		} finally {
+			
 			try {
 				if(rs != null) rs.close();
 			} catch (Exception e2) {
