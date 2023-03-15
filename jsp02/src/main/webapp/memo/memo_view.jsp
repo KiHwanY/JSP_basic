@@ -9,26 +9,26 @@
 <%@ include file="../include/header.jsp" %>
 <script type="text/javascript">
 function updateMemo() {
-	var writer= $("#writer").val();
+	var writer=$("#writer").val();
 	var memo=$("#memo").val();
-	if(writer == null){
+	if(writer==""){
 		alert("이름을 입력하세요");
 		$("#writer").focus();
 		return;
 	}
-	if(memo == null){
+	if(memo==""){
 		alert("메모를 입력하세요");
 		$("#memo").focus();
 		return;
 	}
-	document.form1.action="${path}/memo.servlet/update.do";
-	document.form1.sumbmit();
+	document.form1.action="${path}/memo_servlet/update.do";
+	document.form1.submit();
 	
 }
 function deleteMemo() {
 	if(confirm("삭제하시겠습니까?")){
-		document.form1.action="${path}/memo.servlet/delete.do";
-		document.form1.sumbmit();
+		document.form1.action="${path}/memo_servlet/delete.do";
+		document.form1.submit();
 	}
 }
 

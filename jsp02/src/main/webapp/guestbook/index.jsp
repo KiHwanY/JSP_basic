@@ -13,7 +13,6 @@
 String context = request.getContextPath();
 //컨트롤러 이동
 response.sendRedirect(context+"/guestbook_servlet/list.do");
-
 %>
 
 </body>

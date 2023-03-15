@@ -24,7 +24,7 @@ int[] nums={10,70,80,50,40,30,20};
 </c:forEach>
 <br>
 <!-- 다중 조건문 -->
-<c:set var="season" value="여름" />
+<c:set var="season" value="가을" />
 <!-- java의 switch case문과 같음 -->
 <c:choose>
  <c:when test="${season == '봄'}">

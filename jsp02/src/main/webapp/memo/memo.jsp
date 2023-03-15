@@ -34,7 +34,7 @@ function list() {
 function insert() {
 	var writer =$("#writer").val();
 	var memo =$("#memo").val();
-	var param ="wirter="+writer+"&memo"+memo;
+	var param ="writer="+writer+"&memo"+memo;
 	$.ajax({
 		type:"post",
 		url:"${path}/memo_servlet/insert.do",
@@ -43,7 +43,7 @@ function insert() {
 			list();
 			$("#writer").val("");
 			$("#memo").val("");
-		};
+		}
 	});
 }
 </script>

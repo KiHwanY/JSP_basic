@@ -36,7 +36,7 @@ public class MemoController extends HttpServlet {
 			RequestDispatcher rd=request.getRequestDispatcher(page);
 			rd.forward(request, response);
 		}else if(uri.indexOf("insert.do") != -1) {
-			String writer = request.getParameter("wirter");
+			String writer = request.getParameter("writer");
 			String memo = request.getParameter("memo");
 			MemoDTO dto = new MemoDTO();
 			dto.setWriter(writer);
