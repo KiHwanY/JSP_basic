@@ -25,9 +25,8 @@ public class MemoController extends HttpServlet {
 		MemoDAO dao=new MemoDAO();
 		if(uri.indexOf("list.do") != -1) { //세부uri
 			//검색옵션 + 검색키워드
-			String searchkey = request.getParameter("searchkey");
-			String search= request.getParameter("search");
-			
+			String searchkey=request.getParameter("searchkey");
+			String search=request.getParameter("search");
 			List<MemoDTO> list=dao.listMemo(searchkey,search);//메모 목록 리턴
 			//request 영역에 저장
 			request.setAttribute("list", list);
@@ -36,42 +35,38 @@ public class MemoController extends HttpServlet {
 			RequestDispatcher rd=request.getRequestDispatcher(page);
 			rd.forward(request, response);
 		}else if(uri.indexOf("insert.do") != -1) {
-			String writer = request.getParameter("writer");
-			String memo = request.getParameter("memo");
-			MemoDTO dto = new MemoDTO();
+			String writer=request.getParameter("writer");
+			String memo=request.getParameter("memo");
+			MemoDTO dto=new MemoDTO();
 			dto.setWriter(writer);
 			dto.setMemo(memo);
-			
-			//DAO에 레코드 저장요청
+			//dao에 레코드 저장 요청
 			dao.insertMemo(dto);
-			
 		}else if(uri.indexOf("view.do") != -1) {
-			int idx= Integer.parseInt(request.getParameter("idx"));
+			int idx=Integer.parseInt(request.getParameter("idx"));
 			System.out.println("글번호:"+idx);
-			MemoDTO dto = dao.viewMemo(idx);
+			MemoDTO dto=dao.viewMemo(idx);
 			//request 영역에 저장
 			request.setAttribute("dto", dto);
-			String page = "/memo/memo_view.jsp";
+			String page="/memo/memo_view.jsp";
 			//포워딩
-			RequestDispatcher rd = request.getRequestDispatcher(page);
+			RequestDispatcher rd=request.getRequestDispatcher(page);
 			rd.forward(request, response);
 		}else if(uri.indexOf("update.do") != -1) {
-			//글번호 hidden으로 넘어온 idx 처리
-			int idx = Integer.parseInt(request.getParameter("idx"));
-			String writer = request.getParameter("writer");
-			String memo = request.getParameter("memo");
-			MemoDTO dto = new MemoDTO();
+			//글번호 hidden으로 넘어온 idx처리
+			int idx=Integer.parseInt(request.getParameter("idx"));
+			String writer=request.getParameter("writer");
+			String memo=request.getParameter("memo");
+			MemoDTO dto=new MemoDTO();
 			dto.setIdx(idx);
 			dto.setWriter(writer);
 			dto.setMemo(memo);
-			dao.updateMemo(dto); //레코드 수정
+			dao.updateMemo(dto);//레코드 수정
 			//단순 페이지 이동
 			response.sendRedirect(request.getContextPath()+"/memo/memo.jsp");
-				
 		}else if(uri.indexOf("delete.do") != -1) {
-			int idx = Integer.parseInt(request.getParameter("idx"));
+			int idx=Integer.parseInt(request.getParameter("idx"));
 			dao.deleteMemo(idx);
-			
 			response.sendRedirect(request.getContextPath()+"/memo/memo.jsp");
 		}
 	}

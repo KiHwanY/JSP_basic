@@ -11,7 +11,7 @@ public class MybatisManager {
 	//SqlSession 객체 생성기
 	private static SqlSessionFactory instance;
 	/*
-	 * 생성자 보통 public인데 private처리 했다. 따라서 외부에서 접근이 안된다. new해서 접근 안되기
+	 * 생성자는 보통 public인데 private처리 했다. 따라서 외부에서 접근이 안된다. new해서 접근 안되기
 	 * 때문에 getInstance()우회 접근한다.
 	 * 웹은 사용자들이 많기 때문에 접속할 때 마다 MybatisManager m=new MybatisManager();을
 	 * 실행하면 메모리가 늘어나기 때문에 다수의 인스턴스 생성을 막고 하나의 인스턴스만 생성시켜

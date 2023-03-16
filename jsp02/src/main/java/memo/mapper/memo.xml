@@ -1,41 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
 <mapper namespace="memo">
+
 <!-- select에서 resultType="" 반드시 필요하다. -->
- <select id="listAll" resultType="memo.dto.MemoDTO">
-  select idx,writer,memo,to_char(post_date, 'yyyy-mm-dd hh24:mi:ss') post_date
-  from memo 
-  where  writer like '%'||#{search}||'%' or memo like '%'||#{search}||'%'
-  order by idx desc
- </select>
- 
- <select id="list" resultType="memo.dto.MemoDTO">
- select idx,writer,memo,to_char(post_date, 'yyyy-mm-dd hh24:mi:ss') post_date
- from memo
- where ${searchkey} like '%'||#{search}||'%'
- order by idx desc
- </select>
- <!-- parameterType="type" 은 생략 가능하다 -->
- <select id="view" parameterType="int" resultType="memo.dto.MemoDTO">
- 	select * from memo where idx=#{idx}
- </select>
- 
- <!-- parameterType=""은 생략 가능하다. -->
- <!-- #{변수}: 따옴표 포함 ex) #{writer}=> writer='kim', ${변수} : 따옴표 미포함 -->
- <insert id="insert" parameterType="memo.dto.MemoDTO">
-	 insert into memo(idx, writer, memo)
-	 values ((select nvl(max(idx)+1,1)from memo), #{writer}, #{memo})
+
+
+<select resultType="memo.dto.MemoDTO" id="listAll">
+select idx,writer,memo,to_char(post_date, 'yyyy-mm-dd hh24:mi:ss') post_date
+from memo 
+where writer like '%'|| #{search} ||'%' or memo like '%'|| #{search} ||'%'
+order by idx desc 
+</select>
+
+<select resultType="memo.dto.MemoDTO" id="list">
+select idx,writer,memo,to_char(post_date, 'yyyy-mm-dd hh24:mi:ss') post_date 
+from memo where ${searchkey} like '%'|| #{search} ||'%'
+order by idx desc 
+</select>
+
+<select resultType="memo.dto.MemoDTO" id="view" parameterType="int">
+select * from memo where idx=#{idx} 
+</select>
+
+<!-- parameterType=""은 생략가능하다. -->
+
+
+<!-- #{변수}:따옴표 포함 ex)#{writer}=> writer='kim' , ${변수}:따옴표 미포함 -->
+
+
+<insert id="insert" parameterType="memo.dto.MemoDTO">
+insert into memo (idx, writer, memo) 
+values ( (select nvl(max(idx)+1, 1 ) from memo), #{writer}, #{memo})
  </insert>
- 
- <update id="update" parameterType="memo.dto.MemoDTO">
- update memo set writer=#{writer}, memo=#{memo}
- where idx=#{idx} 
+
+<update id="update" parameterType="memo.dto.MemoDTO">
+update memo set writer=#{writer}, memo=#{memo}where idx=#{idx}
  </update>
- 
- <delete id="delete" parameterType="int">
- delete from memo
- where idx=#{idx}
- </delete>
- 
+
+<delete id="delete" parameterType="int">delete from memo where idx=#{idx} 
+</delete>
+
 </mapper>
