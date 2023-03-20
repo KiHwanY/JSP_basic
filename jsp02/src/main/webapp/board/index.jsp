@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>index</title>
+<title>Insert title here</title>
 <script src="../include/jquery-3.6.3.min.js"></script>
 <%@ include file="../include/header.jsp" %>
 </head>

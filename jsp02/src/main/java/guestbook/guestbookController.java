@@ -23,6 +23,7 @@ public class guestbookController extends HttpServlet {
 		String uri = request.getRequestURI();
 		System.out.println(uri);
 		GuestBookDAO dao = new GuestBookDAO();
+		
 		if(uri.indexOf("list.do") != -1) {
 			//검색옵션과 검색 키워드
 			String searchkey = request.getParameter("searchkey");
@@ -31,6 +32,7 @@ public class guestbookController extends HttpServlet {
 			//검색옵션, 검색키워드에 기본 값 할당
 			if(searchkey == null) searchkey ="name";
 			if(search == null) search ="";
+			
 			System.out.println("searchkey : "+searchkey);
 			System.out.println("search : "+ search);
 			
@@ -46,12 +48,14 @@ public class guestbookController extends HttpServlet {
 			rd.forward(request, response);
 			
 		}else if (uri.indexOf("insert.do") != -1) {
+			
 			String name = request.getParameter("name");
 			String email = request.getParameter("email");
-			String passwd= request.getParameter("passwd");
+			String passwd = request.getParameter("passwd");
 			String content = request.getParameter("content");
 			
 			GuestBookDTO dto = new GuestBookDTO();
+			
 			dto.setName(name);
 			dto.setEmail(email);
 			dto.setPasswd(passwd);
@@ -64,8 +68,10 @@ public class guestbookController extends HttpServlet {
 			response.sendRedirect(request.getContextPath()+url);
 			
 		}else if(uri.indexOf("passwd_check.do") != -1) {
+			
 			int idx= Integer.parseInt(request.getParameter("idx"));
 			String passwd = request.getParameter("passwd");
+			
 			System.out.println("게시물 번호 :"+ idx);
 			System.out.println("비번 : "+ passwd);
 			
@@ -73,6 +79,7 @@ public class guestbookController extends HttpServlet {
 			//비번이 맞으면 true , 틀리면 false 리턴
 			System.out.println("결과 : "+ result);
 			String url ="";
+			
 			if(result) {
 				url="/guestbook/edit.jsp"; //수정용 페이지
 				
@@ -80,12 +87,14 @@ public class guestbookController extends HttpServlet {
 				GuestBookDTO dto =dao.gbDetail(idx);
 				//request 영역에 저장
 				request.setAttribute("dto", dto);
+				
 			}else {
 				url="/guestbook_servlet/list.do";
 			}
 			//화면이동
 			RequestDispatcher rd = request.getRequestDispatcher(url);
 			rd.forward(request, response);
+			
 		}else if(uri.indexOf("update.do") != -1) {
 			
 			int idx= Integer.parseInt(request.getParameter("idx"));
