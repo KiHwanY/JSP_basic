@@ -35,7 +35,18 @@ $(function() {
   <tr>
     <td>${dto.num}</td>
     <td>${dto.writer}</td>
-    <td><a href="${path}/board_servlet/view.do?num=${dto.num}">${dto.subject}</a></td>
+    <td>
+     <!-- 답글 들여쓰기 -->
+     <c:forEach var="i" begin="1" end="${dto.re_level}" >
+      &nbsp;&nbsp;
+     </c:forEach>
+    
+    <a href="${path}/board_servlet/view.do?num=${dto.num}">${dto.subject}</a>
+     <!-- 댓글갯수 표시 --> 
+     <c:if test="${dto.comment_count > 0}">
+     	<span style="color: red;">(${dto.comment_count})</span>
+     </c:if>
+    </td>
     <td>${dto.reg_date}</td>
     <td>${dto.readcount}</td>
     <td align="center">
@@ -44,7 +55,7 @@ $(function() {
        <img src="../images/file.gif">
       </a>
       <script>
-      setTimeout('location.reload()', 1000);//다운로드 횟수를 1초마다 새로고침
+      // setTimeout('location.reload()', 1000);//다운로드횟수를 1초마다 새로고침
       </script>
      </c:if>
     </td>

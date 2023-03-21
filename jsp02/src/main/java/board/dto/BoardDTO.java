@@ -9,9 +9,9 @@ public class BoardDTO {
 	private String passwd;
 	private Date reg_date;
 	private int readcount;
-	private int ref;
-	private int re_step;
-	private int re_level;
+	private int ref; //게시물 그룹
+	private int re_step; //게시물 그룹 순번
+	private int re_level; // 답변 단계
 	private String content;
 	private String ip;
 	private int comment_count; //댓글 갯수, 테이블에는 없음
