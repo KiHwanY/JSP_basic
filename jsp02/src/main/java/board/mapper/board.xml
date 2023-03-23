@@ -6,10 +6,17 @@
 <mapper namespace="board">
 
 <select resultType="board.dto.BoardDTO" id="list">
-select num,writer,subject,reg_date,readcount,filename,filesize,down,ip,re_level,
-(select count(*) from board_comment where board_num=num) comment_count
-from board
-order by ref desc, re_step
+	select * 
+	from (
+ 	select A.*, rownum as rn
+ 	from (
+	 select num,writer,subject,reg_date,readcount
+	 ,filename,filesize,down,ip,re_level
+	 ,(select count(*) from board_comment 
+	 where board_num=num) comment_count, show
+	 from board
+	 order by ref desc, re_step asc) A
+	) where rn between #{start} and #{end};
  </select>
 
 <insert id="insert">
@@ -83,4 +90,35 @@ set writer=#{writer}, subject=#{subject}, content=#{content},
 filename=#{filename}, filesize=#{filesize}, down=#{down}, ip=#{ip}
 where num=#{num}
 </update>
+
+
+<!-- 게시물 삭제(진짜 삭제x) -->
+<update id="delete">
+update board set show='n' 
+where num=#{num}
+</update>
+
+<select id="searchList" resultType="board.dto.BoardDTO">
+	select num,writer,subject,reg_date,readcount,filename,filesize,down,ip,re_level,
+	(select count(*) from board_comment where board_num=num) comment_count, show
+	from board
+	<choose>
+		<when test="search_option != 'all' ">
+		where ${search_option} like #{keyword} and show='y'
+		</when>
+		<otherwise>
+		where ( writer like #{keyword} 
+		or subject like #{keyword} 
+		or content like #{keyword})
+		and show='y'
+		</otherwise>
+	</choose>
+	order by ref desc, re_step
+</select>
+
+<!-- 계시물 갯수 계산 -->
+<select id="count" resultType="int">
+	select count(*) from board
+</select>
+
 </mapper>

@@ -19,10 +19,18 @@ public class BoardDTO {
 	private int filesize;
 	private int down;
 	private String ext; // 첨부파일의 확장자, 테이블에는 없음
+	private String show;
 	
 	
 	//getter/setter , toString 
 	
+	
+	public String getShow() {
+		return show;
+	}
+	public void setShow(String show) {
+		this.show = show;
+	}
 	public int getNum() {
 		return num;
 	}
