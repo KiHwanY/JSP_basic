@@ -16,7 +16,7 @@
 	 where board_num=num) comment_count, show
 	 from board
 	 order by ref desc, re_step asc) A
-	) where rn between #{start} and #{end};
+	) where rn between #{start} and #{end}
  </select>
 
 <insert id="insert">

@@ -10,7 +10,6 @@ import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -25,7 +24,7 @@ import board.dto.BoardDTO;
 import common.Constants;
 import page.Pager;
 
-@WebServlet("/board_servlet/*")
+
 public class BoardController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -39,27 +38,24 @@ public class BoardController extends HttpServlet {
 		BoardDAO dao=new BoardDAO();
 		if(url.indexOf("list.do") != -1) {
 			//레코드 갯수 계산
-			int count =dao.count();
+			int count=dao.count();
 			//페이지 나누기
-			int curPage = 1;
+			int curPage=1;
 			if(request.getParameter("curPage") != null) {
-				curPage= Integer.parseInt(request.getParameter("curPage"));
-				
+				curPage=Integer.parseInt(request.getParameter("curPage"));
 			}
-			Pager pager = new Pager(count, curPage);
-			int start = pager.getPageBegin();
-			int end= pager.getBlockEnd();
+			Pager pager=new Pager(count, curPage);
+			int start=pager.getPageBegin();
+			int end=pager.getPageEnd();
 			
 			//System.out.println("list.do 호출");
 			List<BoardDTO> list = dao.list(start,end);
 			request.setAttribute("list", list);
-			
 			//페이지 네비게이션 출력을 위한 정보 전달
 			request.setAttribute("page", pager);
 			String page="/board/list.jsp";
 			RequestDispatcher rd=request.getRequestDispatcher(page);
 			rd.forward(request, response);
-			
 		}else if(url.indexOf("insert.do") != -1) {
 			//파일업로드 처리
 			File uploadDir=new File(Constants.UPLOAD_PATH);
@@ -198,7 +194,7 @@ public class BoardController extends HttpServlet {
 			int num=Integer.parseInt(request.getParameter("num"));
 			BoardDTO dto=dao.view(num);
 			int ref=dto.getRef(); //답변 그룹 번호
-			int re_step=dto.getRe_step()+1;//출력 순번
+			int re_step=dto.getRe_step();//출력 순번
 			int re_level=dto.getRe_level()+1;//답변 단계
 			String writer=request.getParameter("writer");
 			String subject=request.getParameter("subject");
@@ -317,33 +313,27 @@ public class BoardController extends HttpServlet {
 
 			String page="/board_servlet/list.do";
 			response.sendRedirect(contextPath+page);
-		}else if(url.indexOf("delete.do") != -1 ) {
-			//파일 업로드를 안쓰더라도 MultipartRequest 처리를 해야한다.
+		}else if(url.indexOf("delete.do") != -1) {
+			//파일업로드를 안쓰더라도 MultipartRequest 처리를 해야한다.
 			MultipartRequest multi=new MultipartRequest(request, Constants.UPLOAD_PATH, 
 					Constants.MAX_UPLOAD, "utf-8", new DefaultFileRenamePolicy());
-			
 			//삭제할 게시물 번호
 			int num=Integer.parseInt(multi.getParameter("num"));
-			
 			dao.delete(num);
 			
 			String page="/board_servlet/list.do";
 			response.sendRedirect(contextPath+page);
-			
 		}else if(url.indexOf("search.do") != -1) {
-			//검색 옵션과 검색 키워드
-			String search_option = request.getParameter("search_option");
-			String keyword = request.getParameter("keyword");
+			//검색옵션과 검색키워드
+			String search_option=request.getParameter("search_option");
+			String keyword=request.getParameter("keyword");
 			
-			List<BoardDTO> list= dao.searchList(search_option,keyword);
-			
-			//request 영역에 저장
+			List<BoardDTO> list=dao.searchList(search_option, keyword);
 			request.setAttribute("list", list);
 			request.setAttribute("search_option", search_option);
 			request.setAttribute("keyword", keyword);
-			
 			String page="/board/search.jsp";
-			RequestDispatcher rd = request.getRequestDispatcher(page);
+			RequestDispatcher rd=request.getRequestDispatcher(page);
 			rd.forward(request, response);
 		}
 	}
