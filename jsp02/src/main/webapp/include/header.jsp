@@ -13,4 +13,8 @@ java코드를 안쓸 수는 없지만 이를 최소화 하기 위해 JSTL과 EL�
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <c:set var="path" value="${pageContext.request.contextPath}" />
+<script src="${path}/include/jquery-3.6.3.min.js"></script>
+<script src="${path}/include/js/bootstrap.js"></script>
+<link rel="stylesheet" href="${path}/include/css/bootstrap.css">
+
 
