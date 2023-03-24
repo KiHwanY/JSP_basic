@@ -50,7 +50,7 @@ try{
 파일1 이름 : <%= filename %> <br>
 파일1 크기 : <%= filesize %> <br>
 파일2 이름 : <%= filename2 %> <br>
-파일2 이름 : <%= filesize2 %> <br>
+파일2 크기 : <%= filesize2 %> <br>
 
 </body>
 </html>

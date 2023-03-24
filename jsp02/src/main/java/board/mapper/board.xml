@@ -31,7 +31,8 @@ from board
 where num=#{num} </select>
 
 <update id="plusDown">
-update board set down+1 where num =#{num}
+update board set down= down+1 
+where num=#{num}
 </update>
 <!-- 게시물 상세 정보 -->
 <select id="view" resultType="board.dto.BoardDTO">

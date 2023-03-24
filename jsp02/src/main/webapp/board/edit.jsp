@@ -15,17 +15,16 @@ $(function() {
 	});
 	$("#btnDelete").click(function() {
 		if(confirm("삭제하시겠습니까?")){
-		document.form1.action="${path}/board_servlet/delete.do";
-		document.form1.submit();
-		}
+			document.form1.action="${path}/board_servlet/delete.do";
+			document.form1.submit();
+	  }
 	});
 });
 </script>
-
 </head>
 <body>
 <h2>수정/삭제</h2>
-<form name="form1" method="post"  enctype="multipart/form-data">
+<form name="form1" method="post" enctype="multipart/form-data">
 <table border="1" style="width: 100%;">
  <tr>
   <td>이름</td>
@@ -42,10 +41,10 @@ $(function() {
  <tr>
   <td>첨부파일</td>
   <td>
-  <c:if test="${dto.filesize > 0 }">
-  	${dto.filename}( ${dto.filesize / 1024 } KB)
-  	<input type="checkbox" name="fileDel">첨부파일 삭제 <br>
-  </c:if>
+   <c:if test="${dto.filesize > 0}">
+    ${dto.filename}( ${dto.filesize / 1024} KB)
+     <input type="checkbox" name="fileDel">첨부파일 삭제 <br>
+   </c:if>
   <input type="file" name="file1"></td>
  </tr>
 <!--  <tr>
@@ -54,10 +53,10 @@ $(function() {
  </tr> -->
  <tr>
   <td colspan="2" align="center">
-  	<!-- 수정,삭제를 위한 글번호 -->
-  	<input type="hidden" name="num" value="${dto.num}">
-    <input type="button" value="수정" id="btnUpdate">
-    <input type="button" value="삭제" id="btnDelete">
+   <!-- 수정,삭제를 위한 글번호  -->
+   <input type="hidden" name="num" value="${dto.num}">
+   <input type="button" value="수정" id="btnUpdate">
+   <input type="button" value="삭제" id="btnDelete">
   </td>
  </tr>
 </table>

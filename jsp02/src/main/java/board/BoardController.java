@@ -148,6 +148,7 @@ public class BoardController extends HttpServlet {
 			
 			//다운로드 횟수 증가 처리
 			dao.plusDown(num);
+			
 		}else if(url.indexOf("view.do") != -1) {
 			int num=Integer.parseInt(request.getParameter("num"));
 			HttpSession session=request.getSession();
