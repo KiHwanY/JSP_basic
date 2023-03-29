@@ -134,11 +134,4 @@ public class BoardDTO {
 				+ ", re_level=" + re_level + ", content=" + content + ", ip=" + ip + ", comment_count=" + comment_count
 				+ ", filename=" + filename + ", filesize=" + filesize + ", down=" + down + ", ext=" + ext + "]";
 	}
-	
-	
-	
-	
-	
-	
-
 }

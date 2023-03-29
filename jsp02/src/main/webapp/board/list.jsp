@@ -59,9 +59,9 @@ function list(page) {
 	    
 	    <a href="${path}/board_servlet/view.do?num=${dto.num}">${dto.subject}</a>
 	     <!-- 댓글갯수 표시 --> 
-	     <c:if test="${dto.comment_count > 0}">
-	     	<span style="color: red;">(${dto.comment_count})</span>
-	     </c:if>
+	     <%-- <c:if test="${dto.comment_count > 0}"> --%>
+	     <%-- 	<span style="color: red;">(${dto.comment_count})</span>
+	     </c:if> --%>
 	    </td>
 	    <td>${dto.reg_date}</td>
 	    <td>${dto.readcount}</td>
@@ -71,7 +71,7 @@ function list(page) {
 	       <img src="../images/file.gif">
 	      </a>
 	      <script>
-	      // setTimeout('location.reload()', 1000);//다운로드횟수를 1초마다 새로고침
+	       setTimeout('location.reload()', 1000);//다운로드횟수를 1초마다 새로고침
 	      </script>
 	     </c:if>
 	    </td>

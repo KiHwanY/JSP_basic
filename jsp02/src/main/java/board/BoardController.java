@@ -48,7 +48,7 @@ public class BoardController extends HttpServlet {
 			int start=pager.getPageBegin();
 			int end=pager.getPageEnd();
 			
-			//System.out.println("list.do 호출");
+			
 			List<BoardDTO> list = dao.list(start,end);
 			request.setAttribute("list", list);
 			//페이지 네비게이션 출력을 위한 정보 전달
@@ -60,7 +60,7 @@ public class BoardController extends HttpServlet {
 			//파일업로드 처리
 			File uploadDir=new File(Constants.UPLOAD_PATH);
 			if(!uploadDir.exists()) {//업로드디렉토리가 존재하지 않으면
-				uploadDir.mkdir();//디렉토리를 만듦
+				uploadDir.mkdir();//디렉토리를 만듬
 			}
 			//request를 확장시킨 MultipartRequest생성
 			MultipartRequest multi=new MultipartRequest(request, Constants.UPLOAD_PATH, 
