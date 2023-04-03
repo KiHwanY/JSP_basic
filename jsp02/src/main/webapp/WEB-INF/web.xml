@@ -16,6 +16,18 @@
   	<url-pattern>/board_servlet/*</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+  	<description>Controller</description>
+  	<display-name>MemberController</display-name>
+  	<servlet-name>MemberController</servlet-name>
+  	<servlet-class>member.action.MemberController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>MemberController</servlet-name>
+  	<url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+  
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.jsp</welcome-file>

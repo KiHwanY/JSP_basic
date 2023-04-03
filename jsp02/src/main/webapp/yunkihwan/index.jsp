@@ -127,7 +127,7 @@ $("#idCheck").click(function() {
 	}
 	
 	
-	window.open("/yunkihwan/id_check.jsp?id="+$("#id").val()
+	window.open("${path}/join_servlet/dbCheckId.do?id="+$("#id").val()
 			,"idcheck","width=450,height=130,left=700,top=400");
 });
 

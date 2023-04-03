@@ -247,6 +247,7 @@ public class BoardController extends HttpServlet {
 			MultipartRequest multi=new MultipartRequest(request, Constants.UPLOAD_PATH, 
 					Constants.MAX_UPLOAD, "utf-8", new DefaultFileRenamePolicy());
 			int num=Integer.parseInt(multi.getParameter("num"));
+			
 			String writer=multi.getParameter("writer");
 			String subject=multi.getParameter("subject");
 			String content=multi.getParameter("content");

@@ -10,24 +10,22 @@
 <script type="text/javascript">
 $(function() {
 	comment_list();
-	$("#btnSave").click(function() {
+	$("#btnSave").click(function() { /* 확인 */
 		comment_add();
 	});
-	$("#btnList").click(function() {
+	$("#btnList").click(function() { /* 목록 */
 		location.href="${path}/board_servlet/list.do";
 	});
-	$("#btnReply").click(function() {
+	$("#btnReply").click(function() { /* 답변 */
 		document.form1.action="${path}/board_servlet/reply.do";
 		document.form1.submit();
 	});
-	$("#btnEdit").click(function() {
+	$("#btnEdit").click(function() { /* 수정/삭제 */
 		document.form1.action="${path}/board_servlet/pass_check.do";
 		document.form1.submit();
 	});
-	
-	
 });
-function comment_add() {
+function comment_add() { /* 댓글 쓰기 구현 */
 	var param="board_num=${dto.num}&writer="+$("#writer").val()
 	+"&content="+$("#content").val();
 	$.ajax({
@@ -41,7 +39,7 @@ function comment_add() {
 		}
 	});
 }
-function comment_list() {
+function comment_list() { /* 댓글 목록 출력 */
 	$.ajax({
 		type: "post",
 		url: "${path}/board_servlet/commentList.do",

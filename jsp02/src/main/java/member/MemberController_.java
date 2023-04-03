@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 
 @WebServlet("/member_servlet/*")
-public class MemberController extends HttpServlet {
+public class MemberController_ extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 
