@@ -21,7 +21,7 @@ public class MemberController extends HttpServlet {
 	private HashMap<String, Action> commandMap;
 	
 	public void init(ServletConfig config) throws ServletException{
-		loadProperties("member/properties/MemberCommand.properties");
+		loadProperties("src/main/java/member/properties/MemberCommand.properties");
 	}
   
     private void loadProperties(String filePath) {

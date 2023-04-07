@@ -107,10 +107,11 @@ function list(page) {
 		      <a href="#" onclick="list('${num}')">${num}</a>
 		     </c:otherwise>
 		    </c:choose>
-		   </c:forEach>
+		   </c:forEach>	<!-- 현재페이지블록 < 전체 페이지블록 갯수 -->
 		   <c:if test="${page.curBlock < page.totBlock}">
 		    <a href="#" onclick="list('${page.nextPage}')">[다음]</a>
 		   </c:if>
+		   				<!-- 현재 페이지 < 전체 페이지 갯수 -->
 		   <c:if test="${page.curPage < page.totPage}">
 		    <a href="#" onclick="list('${page.totPage}')">[끝]</a>
 		   </c:if>

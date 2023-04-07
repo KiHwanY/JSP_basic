@@ -49,6 +49,8 @@ public class BoardController extends HttpServlet {
 			int end=pager.getPageEnd();
 			
 			
+			
+			
 			List<BoardDTO> list = dao.list(start,end);
 			request.setAttribute("list", list);
 			//페이지 네비게이션 출력을 위한 정보 전달
