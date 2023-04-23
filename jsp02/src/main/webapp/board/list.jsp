@@ -71,7 +71,7 @@ function list(page) {
 	       <img src="../images/file.gif">
 	      </a>
 	      <script>
-	       setTimeout('location.reload()', 1000);//다운로드횟수를 1초마다 새로고침
+	      /*  setTimeout('location.reload()', 1000);//다운로드횟수를 1초마다 새로고침 */
 	      </script>
 	     </c:if>
 	    </td>

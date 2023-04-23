@@ -43,9 +43,10 @@ $(function() {
   <td>
    <c:if test="${dto.filesize > 0}">
     ${dto.filename}( ${dto.filesize / 1024} KB)
-     <input type="checkbox" name="fileDel">첨부파일 삭제 <br>
+    <input type="checkbox" name="fileDel">첨부파일 삭제 <br>
    </c:if>
-  <input type="file" name="file1"></td>
+  <input type="file" name="file1">
+  </td>
  </tr>
 <!--  <tr>
   <td>비밀번호</td>
